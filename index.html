@@ -399,7 +399,6 @@
 
         let partieSelect = document.getElementById("newPartieNum");
         partieSelect.innerHTML = "";
-        // 4. Mannschaft: 6 Einzel, 3 Doppel, 6 Einzel
         let maxPartien = isDoppel ? 3 : 6;
         for (let i = 1; i <= maxPartien; i++) {
             let prefix = isDoppel ? "Doppel" : "Einzel";
@@ -452,7 +451,8 @@
             if(btn) btn.textContent = "🔄 Aktualisieren";
         } catch (error) {
             console.error(error);
-            document.getElementById("loadingMessage").innerHTML = "⚠️ Fehler beim Laden.";
+            document.getElementById("loadingMessage").innerHTML = "⚠️ Supabase-Fehler: " + error.message;
+            if(btn) btn.textContent = "🔄 Aktualisieren";
         }
     }
 
